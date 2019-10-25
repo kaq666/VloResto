@@ -1,0 +1,6 @@
+velo_resto:
+    path: /bicloo
+    controller: App\Controller\BiclooController::number
+voiture_resto:
+    path: /parking
+    controller: App\Controller\ParkingController::number
