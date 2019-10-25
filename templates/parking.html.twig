@@ -15,7 +15,10 @@
             <div id="mapid" style="width: 100%; height: 95%;"></div>
         
             <script>
-            
+                var vert = 0;
+                var orange = 0;
+                var rouge = 0;
+
                 var mymap = L.map('mapid').setView([47.218371, -1.553621], 13);
             
                 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -56,15 +59,18 @@
 
             {% for localisation in localisations %}
                 <script>
-                    {% if localisation[2] <= 100 %}
+                    {% if localisation[2] <= 50 %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: greenIcon}).addTo(mymap);
                         marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
-                    {% elseif localisation[2] > 100 and localisation[2] <= 500 %}
+                        vert++;
+                    {% elseif localisation[2] > 50 and localisation[2] <= 100 %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: orangeIcon}).addTo(mymap);
                         marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
+                        orange++;
                     {% else %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: redIcon}).addTo(mymap);
                         marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
+                        rouge++;
                     {% endif %}
                 </script>
             {% endfor %}
@@ -76,5 +82,10 @@
                     <a class="nav-link" href="/parking">Parking</a>
                 </li>
             </ul>
+            <script>
+                console.log('Vert : ' + vert);
+                console.log('Orange : ' + orange);
+                console.log('Rouge : ' + rouge);
+            </script>
     </body>
 </html>
