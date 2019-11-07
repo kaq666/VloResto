@@ -61,15 +61,15 @@
                 <script>
                     {% if localisation[2] <= 50 %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: greenIcon}).addTo(mymap);
-                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
+                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.<br>Places restantes : 139.<br>Places max : 532.");
                         vert++;
                     {% elseif localisation[2] > 50 and localisation[2] <= 100 %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: orangeIcon}).addTo(mymap);
-                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
+                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.<br>Places restantes : 64.<br>Places max : 397.");
                         orange++;
                     {% else %}
                         var marker = L.marker([{{ localisation[0] }}, {{ localisation[1] }}], {icon: redIcon}).addTo(mymap);
-                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.");
+                        marker.bindPopup("<b> {{localisation[3] }} :</b><br>Parking le plus proche : {{ localisation[2] }} m.<br>Adresse : {{ localisation[4] }}.<br>Places restantes : 21.<br>Places max : 488.");
                         rouge++;
                     {% endif %}
                 </script>
